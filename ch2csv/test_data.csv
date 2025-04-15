@@ -1,0 +1,6 @@
+order_id,order_date,customer_id,product_name,quantity,unit_price,total_price,country
+1001,2023-01-15,3021,Laptop,1,999.99,999.99,US
+1002,2023-01-16,4172,Smartphone,2,699.50,1399.00,UK
+1003,2023-01-17,3021,Headphones,3,99.99,299.97,US
+1004,2023-01-18,5329,Monitor,1,249.50,249.50,DE
+1005,2023-01-19,4172,Keyboard,2,49.99,99.98,UK

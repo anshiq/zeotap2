@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClickHouse & Flat File Data Integration Tool</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Data Integration Tool</h1>
+        
+        <div class="source-selector">
+            <label>Source:</label>
+            <select id="sourceType">
+                <option value="clickhouse">ClickHouse</option>
+                <option value="flatfile">Flat File</option>
+            </select>
+        </div>
+        
+        <div id="clickhouseConfig" class="config-section">
+            <h2>ClickHouse Configuration</h2>
+            <div class="form-group">
+                <label>Host:</label>
+                <input type="text" id="chHost" placeholder="localhost">
+            </div>
+            <div class="form-group">
+                <label>Port:</label>
+                <input type="text" id="chPort" placeholder="9000">
+            </div>
+            <div class="form-group">
+                <label>Database:</label>
+                <input type="text" id="chDatabase" placeholder="default">
+            </div>
+            <div class="form-group">
+                <label>User:</label>
+                <input type="text" id="chUser" placeholder="default">
+            </div>
+            <div class="form-group">
+                <label>JWT Token:</label>
+                <input type="password" id="chJWTToken">
+            </div>
+            <div class="form-group">
+                <label>Secure Connection:</label>
+                <input type="checkbox" id="chSecure">
+            </div>
+            <button id="connectBtn">Connect</button>
+        </div>
+        
+        <div id="flatfileConfig" class="config-section" style="display:none;">
+            <h2>Flat File Configuration</h2>
+            <div class="form-group">
+                <label>File Path:</label>
+                <input type="text" id="ffFilePath" placeholder="/path/to/file.csv">
+                <input type="file" id="fileUpload" accept=".csv,.txt">
+            </div>
+            <div class="form-group">
+                <label>Delimiter:</label>
+                <input type="text" id="ffDelimiter" placeholder="," maxlength="1">
+            </div>
+            <button id="loadFileBtn">Load File</button>
+        </div>
+        
+        <div class="table-section" style="display:none;">
+            <h2>Tables</h2>
+            <select id="tableSelect"></select>
+            <button id="loadColumnsBtn">Load Columns</button>
+        </div>
+        
+        <div class="columns-section" style="display:none;">
+            <h2>Columns</h2>
+            <div id="columnsList"></div>
+            <button id="previewBtn">Preview Data</button>
+        </div>
+        
+        <div class="preview-section" style="display:none;">
+            <h2>Preview</h2>
+            <div id="previewData"></div>
+        </div>
+        
+        <div class="ingestion-section" style="display:none;">
+            <h2>Data Ingestion</h2>
+            <div class="form-group">
+                <label>Direction:</label>
+                <select id="direction">
+                    <option value="clickhouse_to_flatfile">ClickHouse → Flat File</option>
+                    <option value="flatfile_to_clickhouse">Flat File → ClickHouse</option>
+                </select>
+            </div>
+            <div class="form-group" id="targetFileSection">
+                <label>Target File Path:</label>
+                <input type="text" id="targetFilePath" placeholder="/path/to/output.csv">
+            </div>
+            <div class="form-group" id="targetTableSection" style="display:none;">
+                <label>Target Table Name:</label>
+                <input type="text" id="targetTable" placeholder="new_table">
+            </div>
+            <button id="startIngestionBtn">Start Ingestion</button>
+        </div>
+        
+        <div class="status-section">
+            <div id="statusMessage"></div>
+            <div id="resultMessage"></div>
+        </div>
+    </div>
+    
+    <script src="/static/script.js"></script>
+</body>
+</html>
